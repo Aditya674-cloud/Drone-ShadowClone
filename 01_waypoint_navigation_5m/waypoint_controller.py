@@ -156,9 +156,8 @@ class WaypointDrone(Node):
         now_us = self.now_us()
         now = time.monotonic()
 
-        # -------------------------------------------------
         # 1. Publish Offboard heartbeat
-        # -------------------------------------------------
+    
 
         heartbeat = OffboardControlMode()
 
@@ -174,22 +173,16 @@ class WaypointDrone(Node):
 
         self.mode_pub.publish(heartbeat)
 
-        # -------------------------------------------------
         # 2. Wait until PX4 position is available
-        # -------------------------------------------------
-
+    
         if self.start_pos is None:
             return
 
-        # -------------------------------------------------
-        # 3. Generate waypoints
-        # -------------------------------------------------
+        # 3. Generate waypoint
 
         waypoints = self.get_waypoints()
-
-        # -------------------------------------------------
+        
         # 4. Landing phase
-        # -------------------------------------------------
 
         if self.waypoint_index >= len(waypoints):
 
@@ -202,15 +195,11 @@ class WaypointDrone(Node):
 
             return
 
-        # -------------------------------------------------
         # 5. Current target
-        # -------------------------------------------------
 
         target = waypoints[self.waypoint_index]
 
-        # -------------------------------------------------
         # 6. Publish position setpoint
-        # -------------------------------------------------
 
         sp = TrajectorySetpoint()
 
@@ -227,9 +216,7 @@ class WaypointDrone(Node):
 
         self.sp_pub.publish(sp)
 
-        # -------------------------------------------------
         # 7. Request Offboard mode
-        # -------------------------------------------------
 
         if (
             now - self.started >= 2.0
@@ -245,9 +232,7 @@ class WaypointDrone(Node):
                 "Offboard mode request sent."
             )
 
-        # -------------------------------------------------
         # 8. Arm
-        # -------------------------------------------------
 
         if (
             self.nav_state == 14
@@ -264,9 +249,7 @@ class WaypointDrone(Node):
                 "Arm request sent."
             )
 
-        # -------------------------------------------------
         # 9. Check waypoint distance
-        # -------------------------------------------------
 
         if (
             self.arming_state == 2
