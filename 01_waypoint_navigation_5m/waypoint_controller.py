@@ -141,6 +141,7 @@ class WaypointDrone(Node):
             [x0 + 5, y0,     altitude],
             [x0 + 5, y0 + 5, altitude],
             [x0,     y0 + 5, altitude],
+            [x0,     y0,     altitude],
         ]
 
     def distance_to_waypoint(self, waypoint):
