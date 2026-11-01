@@ -433,4 +433,3 @@ if __name__ == '__main__':
     main()
 
 
-**detect → stop → choose left/right → avoid → reacquire path → continue.**
