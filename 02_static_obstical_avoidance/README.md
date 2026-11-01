@@ -39,6 +39,9 @@ At this stage, the drone is being tested in Gazebo with a single static obstacle
 
 A static red box was added to the Gazebo world.
 
+<img width="1920" height="1080" alt="Screenshot from 2026-11-01 15-09-51" src="https://github.com/user-attachments/assets/460bde70-adea-47d0-8ef8-5a74b9f69743" />
+
+
 ### Obstacle configuration
 
 - Position: approximately `(3, 0, 1)`
